@@ -84,12 +84,8 @@ namespace LD45 {
 		}
 
 		public bool isOnGround() {
-			for (int i = 0; i < 8; i++) {
-				if (Physics.CheckBox(transform.TransformPoint(corners[i]), Vector3.one * 0.05f, transform.rotation, LayerMask.GetMask("Ground"))) {
-					return true;
-				}
-			}
-			return false;
+			Face lowFace = GetLowestFace();
+			return Physics.CheckBox(transform.TransformPoint(lowFace.center), new Vector3(0.49f, 0.05f, 0.49f), Quaternion.FromToRotation(Vector3.down, transform.TransformVector(lowFace.normal)), LayerMask.GetMask("Ground"));
 		}
 
 		public bool GroundContact(out Vector3 contact) {

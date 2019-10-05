@@ -7,8 +7,7 @@ namespace LD45 {
 		public float horizontalWeight = 0.25f;
 		
 		private void Update() {
-			Vector3 contactPoint;
-			if (cube.GroundContact(out contactPoint)) {
+			if (cube.isOnGround()) {
 				if (Input.GetKeyDown(KeyCode.Space)) {
 					Vector3 dir = Vector3.up;
 					dir += GetComponent<RollModule>().GetRollDirection().Unflat(0f) * horizontalWeight;
