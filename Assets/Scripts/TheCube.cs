@@ -46,6 +46,8 @@ namespace LD45 {
 			rb = GetComponent<Rigidbody>();
 			Shader.SetGlobalFloat("_RevealRadius", revealRadius);
 			Shader.SetGlobalFloat("_RevealFade", 1f);
+			Shader.SetGlobalFloat("_DepthFadeStart", -2f);
+			Shader.SetGlobalFloat("_DepthFadeEnd", -4f);
 		}
 
 		private void Update() {

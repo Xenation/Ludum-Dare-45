@@ -3,6 +3,8 @@ uniform float3 _RevealCenter;
 uniform float _RevealRadius;
 uniform float _RevealFade;
 uniform half4 _BGColor;
+uniform float _DepthFadeStart;
+uniform float _DepthFadeEnd;
 
 void GetRevealCenter_float(out float3 RevealCenter) {
 	RevealCenter = _RevealCenter;
@@ -18,6 +20,14 @@ void GetRevealFade_float(out float RevealFade) {
 
 void GetBackgroundColor_half(out half4 BackgroundColor) {
 	BackgroundColor = _BGColor;
+}
+
+void GetDepthFadeStart_float(out float DepthFadeStart) {
+	DepthFadeStart = _DepthFadeStart;
+}
+
+void GetDepthFadeEnd_float(out float DepthFadeEnd) {
+	DepthFadeEnd = _DepthFadeEnd;
 }
 
 
