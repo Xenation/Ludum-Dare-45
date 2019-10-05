@@ -39,6 +39,11 @@ namespace LD45 {
 				}
 			}
 
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Level.current.ReloadLevel();
+            }
+
 			torqueVec = Vector3.zero;
 
 			if (Input.GetKey(KeyCode.Z)) {
