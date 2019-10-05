@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db259841e2a08374a94ddfc31d93d1c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  revealRadius: 4
+  revealRadius: 3
   killY: -5
   rb: {fileID: 0}
 --- !u!114 &5245072844625458576
