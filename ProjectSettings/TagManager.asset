@@ -15,8 +15,8 @@ TagManager:
   - 
   - Post-Process
   - 
-  - Ground
-  - Player
+  - GroundWhite
+  - PlayerWhite
   - 
   - 
   - 
@@ -25,8 +25,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - GroundBlack
+  - PlayerBlack
   - 
   - 
   - 

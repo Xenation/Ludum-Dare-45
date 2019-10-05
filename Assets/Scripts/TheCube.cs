@@ -36,30 +36,28 @@ namespace LD45 {
 		};
 
 		public float revealRadius = 2f;
-		public float killY = -5f;
+		public Dimension dimension;
 
 		public Rigidbody rb;
 
 		private List<CubeModule> modules = new List<CubeModule>();
 
+		private void Awake() {
+			Level.current.RegisterCube(this);
+		}
+
 		private void Start() {
 			rb = GetComponent<Rigidbody>();
 			Shader.SetGlobalFloat("_RevealRadius", revealRadius);
 			Shader.SetGlobalFloat("_RevealFade", 1f);
-			Shader.SetGlobalFloat("_DepthFadeStart", -2f);
-			Shader.SetGlobalFloat("_DepthFadeEnd", -4f);
 		}
 
 		private void Update() {
-			Shader.SetGlobalVector("_BGColor", Camera.main.backgroundColor);
 			Shader.SetGlobalVector("_RevealCenter", transform.position);
-
-			if (transform.position.y < killY) {
-				Level.current.ReloadLevel();
-			}
 		}
 
-		private void OnEnable() {
+		public void Enable() {
+			enabled = true;
 			foreach (CubeModule module in modules) {
 				if (!module.enabled) {
 					module.enabled = true;
@@ -67,7 +65,8 @@ namespace LD45 {
 			}
 		}
 
-		private void OnDisable() {
+		public void Disable() {
+			enabled = false;
 			foreach (CubeModule module in modules) {
 				if (module.enabled) {
 					module.enabled = false;
@@ -76,7 +75,7 @@ namespace LD45 {
 		}
 
 		private void OnDestroy() {
-			Shader.SetGlobalFloat("_RevealRadius", 1000f);
+			Level.current.UnregisterCube(this);
 		}
 
 		public void RegisterModule(CubeModule module) {
@@ -85,7 +84,7 @@ namespace LD45 {
 
 		public bool isOnGround() {
 			Face lowFace = GetLowestFace();
-			return Physics.CheckBox(transform.TransformPoint(lowFace.center), new Vector3(0.49f, 0.05f, 0.49f), Quaternion.FromToRotation(Vector3.down, transform.TransformVector(lowFace.normal)), LayerMask.GetMask("Ground"));
+			return Physics.CheckBox(transform.TransformPoint(lowFace.center), lowFace.normal.Abs() * 0.05f + lowFace.normal.Abs().OneMinus() * 0.49f, transform.rotation, LayerMask.GetMask("Ground" + dimension, "Player" + dimension.Other()));
 		}
 
 		public bool GroundContact(out Vector3 contact) {
@@ -93,7 +92,7 @@ namespace LD45 {
 			uint contacts = 0;
 			for (int i = 0; i < 8; i++) {
 				Vector3 cornerPos = transform.TransformPoint(corners[i]);
-				if (Physics.CheckBox(cornerPos, Vector3.one * 0.05f, transform.rotation, LayerMask.GetMask("Ground"))) {
+				if (Physics.CheckBox(cornerPos, Vector3.one * 0.05f, transform.rotation, LayerMask.GetMask("Ground" + dimension, "Player" + dimension.Other()))) {
 					contact += cornerPos;
 					contacts++;
 				}

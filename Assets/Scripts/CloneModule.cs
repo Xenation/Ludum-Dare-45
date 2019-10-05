@@ -3,22 +3,42 @@
 namespace LD45 {
 	public class CloneModule : CubeModule {
 
-		private TheCube otherCube = null;
+		[System.NonSerialized]
+		public CloneModule other = null;
 
 		private void Update() {
-			if (Input.GetKeyDown(KeyCode.LeftShift)) {
-				GameObject otherGO = Instantiate(gameObject);
-				transform.position += Vector3.up;
-				otherCube = otherGO.GetComponent<TheCube>();
-				otherCube.GetComponent<CloneModule>().otherCube = cube;
-				otherCube.enabled = false;
+			if (other == null && Input.GetKeyDown(KeyCode.LeftShift)) {
+				SpawnClone();
 			}
 
-			if (otherCube != null && Input.GetKeyDown(KeyCode.Tab)) {
-				FindObjectOfType<Follow>().toFollow = otherCube.transform;
-				otherCube.enabled = true;
-				cube.enabled = false;
+			if (other != null && Input.GetKeyDown(KeyCode.Tab)) {
+				Switch();
 			}
+		}
+
+		private void OnDestroy() {
+			if (other == null) return;
+			other.other = null;
+			if (!other.enabled) {
+				Switch();
+			}
+		}
+
+		public void SpawnClone() {
+			GameObject otherGO = Instantiate(gameObject);
+			transform.position += Vector3.up;
+			otherGO.layer = LayerMask.NameToLayer("Player" + cube.dimension.Other());
+			other = otherGO.GetComponent<CloneModule>();
+			other.other = this;
+			other.cube.dimension = cube.dimension.Other();
+			other.cube.Disable();
+		}
+
+		public void Switch() {
+			FindObjectOfType<Follow>().toFollow = other.transform;
+			other.cube.Enable();
+			cube.Disable();
+			Level.current.SetDimension(other.cube.dimension);
 		}
 
 	}

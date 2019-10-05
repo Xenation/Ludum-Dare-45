@@ -4,8 +4,8 @@ namespace LD45 {
 	public class LevelEnd : MonoBehaviour {
 
 		private void OnTriggerEnter(Collider other) {
-			if (other.gameObject.layer != LayerMask.NameToLayer("Player")) return;
-
+			if (((1 << other.gameObject.layer) & LayerMask.GetMask("PlayerWhite", "PlayerBlack")) == 0) return;
+			
 			Level.current.NextLevel();
 		}
 
