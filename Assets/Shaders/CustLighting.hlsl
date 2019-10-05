@@ -1,4 +1,46 @@
 
+uniform float3 _RevealCenter;
+uniform float _RevealRadius;
+uniform float _RevealFade;
+uniform half4 _BGColor;
+
+void GetRevealCenter_float(out float3 RevealCenter) {
+	RevealCenter = _RevealCenter;
+}
+
+void GetRevealRadius_float(out float RevealRadius) {
+	RevealRadius = _RevealRadius;
+}
+
+void GetRevealFade_float(out float RevealFade) {
+	RevealFade = _RevealFade;
+}
+
+void GetBackgroundColor_half(out half4 BackgroundColor) {
+	BackgroundColor = _BGColor;
+}
+
+
+// Custom Light functions to circumvent the fact that _MAIN_LIGHT_SHADOWS is not set on unlit graphs
+half XMainLightRealtimeShadow(float4 shadowCoord) {
+	#if defined(_RECEIVE_SHADOWS_OFF)
+    return 1.0h;
+	#endif
+
+	#if SHADOWS_SCREEN
+		return SampleScreenSpaceShadowmap(shadowCoord);
+	#else
+		ShadowSamplingData shadowSamplingData = GetMainLightShadowSamplingData();
+		half shadowStrength = GetMainLightShadowStrength();
+		return SampleShadowmap(shadowCoord, TEXTURE2D_ARGS(_MainLightShadowmapTexture, sampler_MainLightShadowmapTexture), shadowSamplingData, shadowStrength, false);
+	#endif
+}
+
+Light XGetMainLight(float4 shadowCoord) {
+	Light light = GetMainLight();
+	light.shadowAttenuation = XMainLightRealtimeShadow(shadowCoord);
+	return light;
+}
 
 void MainLight_half(float3 WorldPos, out half3 Direction, out half3 Color, out half DistanceAtten, out half ShadowAtten) {
 #if SHADERGRAPH_PREVIEW
@@ -13,7 +55,7 @@ void MainLight_half(float3 WorldPos, out half3 Direction, out half3 Color, out h
 #else
 	half4 shadowCoord = TransformWorldToShadowCoord(WorldPos);
 #endif
-	Light mainLight = GetMainLight(shadowCoord);
+	Light mainLight = XGetMainLight(shadowCoord);
 	Direction = mainLight.direction;
 	Color = mainLight.color;
 	DistanceAtten = mainLight.distanceAttenuation;
