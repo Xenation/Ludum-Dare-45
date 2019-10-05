@@ -76,7 +76,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.33, g: 0.33, b: 0.33, a: 0}
+  m_BackGroundColor: {r: 0.15, g: 0.15, b: 0.15, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -207,6 +207,7 @@ GameObject:
   - component: {fileID: 5245072844625458579}
   - component: {fileID: 5245072844625458578}
   - component: {fileID: 5245072844625458577}
+  - component: {fileID: 6825547517165206509}
   - component: {fileID: 5245072844625458576}
   m_Layer: 11
   m_Name: Cube
@@ -304,6 +305,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6825547517165206509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5245072844625458671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db259841e2a08374a94ddfc31d93d1c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  revealRadius: 4
+  killY: -5
+  rb: {fileID: 0}
 --- !u!114 &5245072844625458576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,10 +334,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkForce: 30
   rotateForce: 120
-  jumpForce: 20
-  killY: -5
-  revealMat: {fileID: 2100000, guid: 4789916678e17c541876a6b8859e579b, type: 2}
-  revealRadius: 3
 --- !u!1 &5245072844879769077
 GameObject:
   m_ObjectHideFlags: 0
