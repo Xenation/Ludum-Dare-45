@@ -47,3 +47,5 @@ MonoBehaviour:
     type: 3}
   portalEffect: {fileID: 7201838493873934344, guid: 67248a5f484ff4f46ac9c5513885ba83,
     type: 3}
+  destructibleEffect: {fileID: 983011092208306083, guid: 933b204984909ef4abf2d3e2fc4bef14,
+    type: 3}

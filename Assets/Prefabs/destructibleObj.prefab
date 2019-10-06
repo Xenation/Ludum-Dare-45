@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 222844678934571358}
   - component: {fileID: 222844678934571359}
   m_Layer: 10
-  m_Name: Plank (1)
+  m_Name: destructibleObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

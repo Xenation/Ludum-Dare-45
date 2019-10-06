@@ -18,6 +18,7 @@ namespace LD45 {
 
 		private void Update() {
 			if (health < 0f) {
+				EffectManager.I.PlayEffect(Effect.Destructible, transform);
 				Destroy(gameObject);
 				return;
 			}

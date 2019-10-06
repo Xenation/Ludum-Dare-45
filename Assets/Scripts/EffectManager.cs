@@ -3,13 +3,15 @@
 namespace LD45 {
 	public enum Effect {
 		Upgrade,
-		Portal
+		Portal,
+		Destructible
 	}
 
 	public class EffectManager : Singleton<EffectManager> {
 
 		public GameObject upgradeEffect;
 		public GameObject portalEffect;
+		public GameObject destructibleEffect;
 
 		public void PlayEffect(Effect effect, Transform tr) {
 			GameObject prefab = null;
@@ -20,8 +22,14 @@ namespace LD45 {
 				case Effect.Portal:
 					prefab = portalEffect;
 					break;
+				case Effect.Destructible:
+					prefab = destructibleEffect;
+					break;
 			}
-			Instantiate(prefab, tr.position, tr.rotation);
+			GameObject effectObj = Instantiate(prefab, tr.position, tr.rotation);
+			if (effect == Effect.Destructible) {
+				effectObj.transform.localScale = tr.localScale;
+			}
 		}
 
 	}
