@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a4cd7d4dc5048846baa3b08cf7b4c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasUpgraded: 0
   killY: -5
   nextLevel: Level7
   activeDimension: 0
@@ -1438,6 +1439,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec95dd4bd0102e14b8b876084348482c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whiteMat: {fileID: 2100000, guid: b29f07ebcdc034348ad64dabe4e0f6f5, type: 2}
+  blackMat: {fileID: 2100000, guid: 1f5e499694310784287a5e9e8c2eea97, type: 2}
 --- !u!1 &1572800895
 GameObject:
   m_ObjectHideFlags: 0
