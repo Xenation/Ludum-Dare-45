@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a4cd7d4dc5048846baa3b08cf7b4c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  killY: -5
   nextLevel: TestScene2
   activeDimension: 0
 --- !u!4 &190364526
@@ -607,7 +608,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-457632
+  m_Name: pb_Mesh-1751400
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -770,7 +771,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh36136
+  m_Name: pb_Mesh95894
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -933,7 +934,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh36186
+  m_Name: pb_Mesh95948
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3005,7 +3006,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1083330
+  m_Name: pb_Mesh95998
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3909,7 +3910,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1083332
+  m_Name: pb_Mesh95976
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4411,7 +4412,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh36212
+  m_Name: pb_Mesh96020
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4606,7 +4607,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh36174
+  m_Name: pb_Mesh95936
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4833,7 +4834,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-457620
+  m_Name: pb_Mesh-1751388
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5205,6 +5206,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5245072843642849035, guid: 73d6decee6c91e14a863bf761daec482,
+        type: 3}
+      propertyPath: antialiasingMode
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73d6decee6c91e14a863bf761daec482, type: 3}
