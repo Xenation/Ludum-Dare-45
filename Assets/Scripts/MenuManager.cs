@@ -28,7 +28,7 @@ namespace LD45 {
 		}
 
 		private void Update() {
-			if (Input.GetKeyDown(KeyCode.Tab)) {
+			if (Input.GetButtonDown("Switch")) {
 				dim = dim.Other();
 				Material[] mats = new Material[2] { (dim == Dimension.White) ? whiteMat : blackMat, (dim == Dimension.White) ? whiteGlowMat : blackGlowMat };
 				playBtn.GetComponent<Renderer>().materials = mats;

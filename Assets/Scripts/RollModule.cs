@@ -12,33 +12,39 @@ namespace LD45 {
 		private void Update() {
 			torqueVec = Vector3.zero;
 			rollDirection = Vector2.zero;
+			
+			rollDirection += Vector2.up * Input.GetAxisRaw("Vertical");
+			torqueVec += Vector3.right * Input.GetAxisRaw("Vertical");
+			//if (Input.GetKey(KeyCode.Z)) {
+			//	rollDirection += Vector2.up;
+			//	torqueVec += Vector3.right;
+			//}
+			//if (Input.GetKey(KeyCode.S)) {
+			//	rollDirection -= Vector2.up;
+			//	torqueVec -= Vector3.right;
+			//}
 
-			if (Input.GetKey(KeyCode.Z)) {
-				rollDirection += Vector2.up;
-				torqueVec += Vector3.right;
-			}
-			if (Input.GetKey(KeyCode.S)) {
-				rollDirection -= Vector2.up;
-				torqueVec -= Vector3.right;
-			}
-			if (Input.GetKey(KeyCode.Q)) {
-				rollDirection -= Vector2.right;
-				torqueVec += Vector3.forward;
-			}
-			if (Input.GetKey(KeyCode.D)) {
-				rollDirection += Vector2.right;
-				torqueVec -= Vector3.forward;
-			}
+			rollDirection += Vector2.right * Input.GetAxisRaw("Horizontal");
+			torqueVec += Vector3.back * Input.GetAxisRaw("Horizontal");
+			//if (Input.GetKey(KeyCode.Q)) {
+			//	rollDirection -= Vector2.right;
+			//	torqueVec += Vector3.forward;
+			//}
+			//if (Input.GetKey(KeyCode.D)) {
+			//	rollDirection += Vector2.right;
+			//	torqueVec -= Vector3.forward;
+			//}
 			rollDirection.Normalize();
 			torqueVec.Normalize();
 			torqueVec *= walkForce;
 
-			if (Input.GetKey(KeyCode.E)) {
-				torqueVec += Vector3.up * rotateForce;
-			}
-			if (Input.GetKey(KeyCode.A)) {
-				torqueVec -= Vector3.up * rotateForce;
-			}
+			torqueVec += Vector3.up * rotateForce * Input.GetAxisRaw("Rotate");
+			//if (Input.GetKey(KeyCode.E)) {
+			//	torqueVec += Vector3.up * rotateForce;
+			//}
+			//if (Input.GetKey(KeyCode.A)) {
+			//	torqueVec -= Vector3.up * rotateForce;
+			//}
 		}
 
 		private void FixedUpdate() {

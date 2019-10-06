@@ -14,10 +14,12 @@ namespace LD45 {
 
 			GameObject canvasObj = new GameObject("Canvas");
 			canvasObj.transform.SetParent(transform, false);
+			canvasObj.layer = LayerMask.NameToLayer("UI");
 			Canvas canvas = canvasObj.AddComponent<Canvas>();
 			canvas.renderMode = RenderMode.ScreenSpaceOverlay;
 			canvasObj.AddComponent<CanvasScaler>();
 			GameObject fader = new GameObject("Fader");
+			fader.layer = LayerMask.NameToLayer("UI");
 			fader.transform.SetParent(canvasObj.transform, false);
 			fader.AddComponent<CanvasRenderer>();
 			fadeGraphic = fader.AddComponent<RawImage>();

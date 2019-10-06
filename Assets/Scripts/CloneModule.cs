@@ -10,11 +10,11 @@ namespace LD45 {
 		public CloneModule other = null;
 
 		private void Update() {
-			if (other == null && Input.GetKeyDown(KeyCode.LeftShift)) {
+			if (other == null && Input.GetButtonDown("Clone")) {
 				SpawnClone();
 			}
 
-			if (other != null && Input.GetKeyDown(KeyCode.Tab)) {
+			if (other != null && Input.GetButtonDown("Switch")) {
 				Switch();
 			}
 		}

@@ -91,7 +91,7 @@ namespace LD45 {
 
 		public bool isOnGround() {
 			Face lowFace = GetLowestFace();
-			return Physics.CheckBox(transform.TransformPoint(lowFace.center), lowFace.normal.Abs() * 0.05f + lowFace.normal.Abs().OneMinus() * 0.49f, transform.rotation, LayerMask.GetMask("Ground" + dimension, "Player" + dimension.Other()));
+			return Physics.CheckBox(transform.TransformPoint(lowFace.center), lowFace.normal.Abs() * 0.1f + lowFace.normal.Abs().OneMinus() * 0.49f, transform.rotation, LayerMask.GetMask("Ground", "Ground" + dimension, "Player" + dimension.Other()));
 		}
 
 		public bool GroundContact(out Vector3 contact) {

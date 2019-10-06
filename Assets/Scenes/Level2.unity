@@ -559,7 +559,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-171300
+  m_Name: pb_Mesh-474018
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -722,7 +722,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-171302
+  m_Name: pb_Mesh-474020
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -921,6 +921,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelEnd
       objectReference: {fileID: 0}
+    - target: {fileID: 6334496237893454388, guid: d191f7a66f556b24bac1474819d7c260,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 580526262}
+    - target: {fileID: 2701695944717256307, guid: d191f7a66f556b24bac1474819d7c260,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 580526262}
+    - target: {fileID: 4943979137496174111, guid: d191f7a66f556b24bac1474819d7c260,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 660613082}
+    - target: {fileID: 7153161617285669545, guid: d191f7a66f556b24bac1474819d7c260,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 660613082}
     - target: {fileID: 977700267049538254, guid: d191f7a66f556b24bac1474819d7c260,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -976,26 +996,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2701695944717256307, guid: d191f7a66f556b24bac1474819d7c260,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 580526262}
-    - target: {fileID: 6334496237893454388, guid: d191f7a66f556b24bac1474819d7c260,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 580526262}
-    - target: {fileID: 7153161617285669545, guid: d191f7a66f556b24bac1474819d7c260,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 660613082}
-    - target: {fileID: 4943979137496174111, guid: d191f7a66f556b24bac1474819d7c260,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 660613082}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d191f7a66f556b24bac1474819d7c260, type: 3}
 --- !u!4 &1079171441 stripped
@@ -1392,7 +1392,7 @@ PrefabInstance:
     - target: {fileID: 3204332804628813287, guid: 3c577080fedee8348952f3e4dae9e3b0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.1
+      value: 2.35
       objectReference: {fileID: 0}
     - target: {fileID: 3204332804628813287, guid: 3c577080fedee8348952f3e4dae9e3b0,
         type: 3}
@@ -1439,11 +1439,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3204332804628813287, guid: 3c577080fedee8348952f3e4dae9e3b0,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3204332804628813284, guid: 3c577080fedee8348952f3e4dae9e3b0,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -1460,6 +1455,31 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3204332804628813284, guid: 3c577080fedee8348952f3e4dae9e3b0,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 4.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700896536003474742, guid: 3c577080fedee8348952f3e4dae9e3b0,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700896536003474742, guid: 3c577080fedee8348952f3e4dae9e3b0,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700896536003474742, guid: 3c577080fedee8348952f3e4dae9e3b0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 181401517536031150, guid: 3c577080fedee8348952f3e4dae9e3b0,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 4.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 181401517536031150, guid: 3c577080fedee8348952f3e4dae9e3b0,
         type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: 4.75

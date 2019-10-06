@@ -8,7 +8,7 @@ namespace LD45 {
 		
 		private void Update() {
 			if (cube.isOnGround()) {
-				if (Input.GetKeyDown(KeyCode.Space)) {
+				if (Input.GetButtonDown("Jump")) {
 					Vector3 dir = Vector3.up;
 					dir += GetComponent<RollModule>().GetRollDirection().Unflat(0f) * horizontalWeight;
 					dir.Normalize();
