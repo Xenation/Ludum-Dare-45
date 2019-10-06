@@ -74,6 +74,13 @@ namespace LD45 {
 			}
 		}
 
+		public void Kill() {
+			foreach (CubeModule module in modules) {
+				module.OnKill();
+			}
+			Destroy(gameObject);
+		}
+
 		private void OnDestroy() {
 			Level.current.UnregisterCube(this);
 		}

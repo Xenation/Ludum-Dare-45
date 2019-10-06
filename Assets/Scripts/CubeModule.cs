@@ -11,5 +11,7 @@ namespace LD45 {
 			cube.RegisterModule(this);
 		}
 
+		public virtual void OnKill() { }
+
 	}
 }
