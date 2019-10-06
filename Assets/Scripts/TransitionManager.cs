@@ -37,7 +37,9 @@ namespace LD45 {
 
 		public void FadeToBlack(float duration, Process.OnTerminateCallback endCallback, float delay = 0f) {
 			FadeOutProcess fadeOut = new FadeOutProcess(duration, fadeGraphic);
-			fadeOut.TerminateCallback += endCallback;
+			if (endCallback != null) {
+				fadeOut.TerminateCallback += endCallback;
+			}
 			if (delay != 0f) {
 				TimedProcess delayProcess = new TimedProcess(delay);
 				delayProcess.Attach(fadeOut);
@@ -49,7 +51,9 @@ namespace LD45 {
 
 		public void FadeFromBlack(float duration, Process.OnTerminateCallback endCallback, float delay = 0f) {
 			FadeInProcess fadeIn = new FadeInProcess(duration, fadeGraphic);
-			fadeIn.TerminateCallback += endCallback;
+			if (endCallback != null) {
+				fadeIn.TerminateCallback += endCallback;
+			}
 			if (delay != 0f) {
 				TimedProcess delayProcess = new TimedProcess(delay);
 				delayProcess.Attach(fadeIn);
