@@ -10,7 +10,7 @@ namespace LD45 {
 			transform.position = toFollow.position;
 		}
 
-		private void Update() {
+		private void LateUpdate() {
 			if (toFollow == null) return;
 			transform.position = Vector3.Lerp(transform.position, toFollow.position, lerpFactor);
 		}

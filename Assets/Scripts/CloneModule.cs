@@ -3,6 +3,9 @@
 namespace LD45 {
 	public class CloneModule : CubeModule {
 
+		public Material whiteMat;
+		public Material blackMat;
+
 		[System.NonSerialized]
 		public CloneModule other = null;
 
@@ -16,7 +19,7 @@ namespace LD45 {
 			}
 		}
 
-		private void OnDestroy() {
+		public override void OnKill() {
 			if (other == null) return;
 			other.other = null;
 			if (!other.enabled) {
@@ -31,6 +34,7 @@ namespace LD45 {
 			other = otherGO.GetComponent<CloneModule>();
 			other.other = this;
 			other.cube.dimension = cube.dimension.Other();
+			otherGO.GetComponent<Renderer>().sharedMaterial = (other.cube.dimension == Dimension.White) ? whiteMat : blackMat;
 			other.cube.Disable();
 		}
 

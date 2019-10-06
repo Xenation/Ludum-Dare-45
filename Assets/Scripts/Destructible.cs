@@ -32,7 +32,7 @@ namespace LD45 {
 		}
 
 		private void OnCollisionEnter(Collision collision) {
-			Debug.Log("COL: " + collision.impulse.magnitude);
+			//Debug.Log("COL: " + collision.impulse.magnitude);
 			health -= collision.impulse.magnitude;
 		}
 
