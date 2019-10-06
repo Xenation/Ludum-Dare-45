@@ -1044,6 +1044,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6825547517165206509, guid: 73d6decee6c91e14a863bf761daec482,
+        type: 3}
+      propertyPath: revealRadius
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5245072844625458576, guid: 73d6decee6c91e14a863bf761daec482,
         type: 3}
       propertyPath: jumpForce
@@ -1130,7 +1135,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a4cd7d4dc5048846baa3b08cf7b4c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  killY: -5
   nextLevel: Level4
+  activeDimension: 0
 --- !u!4 &1018065489
 Transform:
   m_ObjectHideFlags: 0
@@ -1152,15 +1159,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 232227873}
     m_Modifications:
-    - target: {fileID: 6455204374651120048, guid: cbf327fab7a5bd44595e71a194c16e66,
-        type: 3}
-      propertyPath: m_Mass
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 5148127784879775566, guid: cbf327fab7a5bd44595e71a194c16e66,
         type: 3}
       propertyPath: m_Name
       value: plank (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6455204374651120048, guid: cbf327fab7a5bd44595e71a194c16e66,
+        type: 3}
+      propertyPath: m_Mass
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1443680351022173426, guid: cbf327fab7a5bd44595e71a194c16e66,
         type: 3}
@@ -1681,15 +1688,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 232227873}
     m_Modifications:
-    - target: {fileID: 6455204374651120048, guid: cbf327fab7a5bd44595e71a194c16e66,
-        type: 3}
-      propertyPath: m_Mass
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 5148127784879775566, guid: cbf327fab7a5bd44595e71a194c16e66,
         type: 3}
       propertyPath: m_Name
       value: plank (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6455204374651120048, guid: cbf327fab7a5bd44595e71a194c16e66,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1443680351022173426, guid: cbf327fab7a5bd44595e71a194c16e66,
         type: 3}
