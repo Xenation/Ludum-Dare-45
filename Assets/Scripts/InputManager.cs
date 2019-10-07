@@ -48,6 +48,7 @@ namespace LD45 {
 		};
 
 		public static float GetAxisRaw(string name) {
+			//Debug.Log(mode);
 			switch (mode) {
 				default:
 				case Mode.Classic:
@@ -63,13 +64,16 @@ namespace LD45 {
 			for (int i = 0; i < overrides.Length; i++) {
 				if (overrides[i].name != name) continue;
 				if (Input.GetKey(overrides[i].positive)) {
+					//Debug.Log("POS");
 					return 1f;
 				} else if (Input.GetKey(overrides[i].negative)) {
+					//Debug.Log("NEG");
 					return -1f;
 				} else {
 					return 0f;
 				}
 			}
+			Debug.Log("NO OVERRIDE FOUND");
 			return 0f;
 		}
 

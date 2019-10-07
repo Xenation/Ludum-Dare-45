@@ -59,10 +59,22 @@ namespace LD45 {
 				playBtn.GetComponent<Renderer>().materials = mats;
 				selectBtn.GetComponent<Renderer>().materials = mats;
 				quitBtn.GetComponent<Renderer>().materials = mats;
+				qwertyBtn.GetComponent<Renderer>().materials = mats;
+				SetSubTextsColor(qwertyBtn.transform, (dim == Dimension.White) ? Color.white : Color.black);
+				azertyBtn.GetComponent<Renderer>().materials = mats;
+				SetSubTextsColor(azertyBtn.transform, (dim == Dimension.White) ? Color.white : Color.black);
 				titleObj.GetComponent<Renderer>().material = (dim == Dimension.White) ? whiteMat : blackMat;
 				Camera.main.cullingMask = ~LayerMask.GetMask("Ground" + dim.Other());
 				Shader.SetGlobalVector("_BGColor", dim.GetBGColor());
 				Camera.main.backgroundColor = dim.GetBGColor();
+			}
+		}
+
+		private void SetSubTextsColor(Transform root, Color color) {
+			foreach (Transform child in root) {
+				TextMesh text = child.GetComponent<TextMesh>();
+				if (text == null) continue;
+				text.color = color;
 			}
 		}
 

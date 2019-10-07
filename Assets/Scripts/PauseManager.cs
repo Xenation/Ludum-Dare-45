@@ -47,6 +47,8 @@ namespace LD45 {
 		}
 
 		private void BackToMenu() {
+			Time.timeScale = 1f;
+			Time.fixedDeltaTime = Time.timeScale * 0.02f;
 			SceneManager.LoadScene("Menu");
 		}
 
