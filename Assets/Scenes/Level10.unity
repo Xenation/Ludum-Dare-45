@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -406,7 +406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasUpgraded: 0
   killY: -5
-  nextLevel: 
+  nextLevel: Menu
   activeDimension: 0
 --- !u!4 &72970879
 Transform:
@@ -12205,7 +12205,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-318908
+  m_Name: pb_Mesh-158168
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12768,7 +12768,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-318906
+  m_Name: pb_Mesh-158166
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

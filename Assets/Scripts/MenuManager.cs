@@ -12,14 +12,27 @@ namespace LD45 {
 		public Material whiteGlowMat;
 		public Material blackGlowMat;
 
+		public Transform cameraTarget;
+		public Transform levelSelectRoot;
+
 		private PhysicalButton playBtn;
+		private PhysicalButton selectBtn;
 		private PhysicalButton quitBtn;
 		private GameObject titleObj;
 		private Dimension dim = Dimension.White;
+		private bool clicked = false;
 
 		private void Awake() {
+			Shader.SetGlobalFloat("_DepthFadeStart", -1f);
+			Shader.SetGlobalFloat("_DepthFadeEnd", -5f);
+			Shader.SetGlobalVector("_BGColor", Color.black);
+			Shader.SetGlobalFloat("_RevealRadius", 1000f);
+			Camera.main.backgroundColor = Color.black;
+
 			playBtn = transform.Find("Play").GetComponent<PhysicalButton>();
 			playBtn.onClick += PlayClicked;
+			selectBtn = transform.Find("LevelSelect").GetComponent<PhysicalButton>();
+			selectBtn.onClick += SelectClicked;
 			quitBtn = transform.Find("Quit").GetComponent<PhysicalButton>();
 			quitBtn.onClick += QuitClicked;
 			titleObj = transform.Find("Title").Find("default").gameObject;
@@ -32,6 +45,7 @@ namespace LD45 {
 				dim = dim.Other();
 				Material[] mats = new Material[2] { (dim == Dimension.White) ? whiteMat : blackMat, (dim == Dimension.White) ? whiteGlowMat : blackGlowMat };
 				playBtn.GetComponent<Renderer>().materials = mats;
+				selectBtn.GetComponent<Renderer>().materials = mats;
 				quitBtn.GetComponent<Renderer>().materials = mats;
 				titleObj.GetComponent<Renderer>().material = (dim == Dimension.White) ? whiteMat : blackMat;
 				Camera.main.cullingMask = ~LayerMask.GetMask("Ground" + dim.Other());
@@ -41,6 +55,8 @@ namespace LD45 {
 		}
 
 		private void PlayClicked() {
+			if (clicked) return;
+			clicked = true;
 			TransitionManager.I.FadeToBlack(1f, Play);
 		}
 
@@ -48,7 +64,13 @@ namespace LD45 {
 			SceneManager.LoadScene(firstLevel);
 		}
 
+		private void SelectClicked() {
+			cameraTarget.position = levelSelectRoot.position;
+		}
+
 		private void QuitClicked() {
+			if (clicked) return;
+			clicked = true;
 			TransitionManager.I.FadeToBlack(1f, Quit);
 		}
 
