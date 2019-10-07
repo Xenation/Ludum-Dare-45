@@ -31,6 +31,7 @@ namespace LD45 {
 			GameObject otherGO = Instantiate(gameObject);
 			transform.position += Vector3.up;
 			otherGO.layer = LayerMask.NameToLayer("Player" + cube.dimension.Other());
+			otherGO.transform.SetParent(transform.parent);
 			other = otherGO.GetComponent<CloneModule>();
 			other.other = this;
 			other.cube.dimension = cube.dimension.Other();
@@ -39,7 +40,7 @@ namespace LD45 {
 		}
 
 		public void Switch() {
-			FindObjectOfType<Follow>().toFollow = other.transform;
+			transform.parent.Find("CameraFollow").GetComponent<Follow>().toFollow = other.transform;
 			other.cube.Enable();
 			cube.Disable();
 			Level.current.SetDimension(other.cube.dimension);

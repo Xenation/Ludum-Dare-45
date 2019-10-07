@@ -13,8 +13,8 @@ namespace LD45 {
 			torqueVec = Vector3.zero;
 			rollDirection = Vector2.zero;
 			
-			rollDirection += Vector2.up * Input.GetAxisRaw("Vertical");
-			torqueVec += Vector3.right * Input.GetAxisRaw("Vertical");
+			rollDirection += Vector2.up * InputManager.GetAxisRaw("Vertical");
+			torqueVec += Vector3.right * InputManager.GetAxisRaw("Vertical");
 			//if (Input.GetKey(KeyCode.Z)) {
 			//	rollDirection += Vector2.up;
 			//	torqueVec += Vector3.right;
@@ -24,8 +24,8 @@ namespace LD45 {
 			//	torqueVec -= Vector3.right;
 			//}
 
-			rollDirection += Vector2.right * Input.GetAxisRaw("Horizontal");
-			torqueVec += Vector3.back * Input.GetAxisRaw("Horizontal");
+			rollDirection += Vector2.right * InputManager.GetAxisRaw("Horizontal");
+			torqueVec += Vector3.back * InputManager.GetAxisRaw("Horizontal");
 			//if (Input.GetKey(KeyCode.Q)) {
 			//	rollDirection -= Vector2.right;
 			//	torqueVec += Vector3.forward;
@@ -38,7 +38,7 @@ namespace LD45 {
 			torqueVec.Normalize();
 			torqueVec *= walkForce;
 
-			torqueVec += Vector3.up * rotateForce * Input.GetAxisRaw("Rotate");
+			torqueVec += Vector3.up * rotateForce * InputManager.GetAxisRaw("Rotate");
 			//if (Input.GetKey(KeyCode.E)) {
 			//	torqueVec += Vector3.up * rotateForce;
 			//}

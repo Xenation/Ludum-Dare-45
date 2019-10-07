@@ -65,6 +65,17 @@ namespace LD45 {
 					cube.Kill();
 				}
 			}
+
+			// DEBUG
+			if (Input.GetKeyDown(KeyCode.I)) {
+				InputManager.mode = InputManager.Mode.Classic;
+			}
+			if (Input.GetKeyDown(KeyCode.O)) {
+				InputManager.mode = InputManager.Mode.ForceAZERTY;
+			}
+			if (Input.GetKeyDown(KeyCode.P)) {
+				InputManager.mode = InputManager.Mode.ForceQWERTY;
+			}
 		}
 
 		private void ReloadFadeEnded() {
