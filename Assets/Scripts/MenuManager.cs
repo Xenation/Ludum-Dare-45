@@ -18,6 +18,8 @@ namespace LD45 {
 		private PhysicalButton playBtn;
 		private PhysicalButton selectBtn;
 		private PhysicalButton quitBtn;
+		private PhysicalButton qwertyBtn;
+		private PhysicalButton azertyBtn;
 		private GameObject titleObj;
 		private Dimension dim = Dimension.White;
 		private bool clicked = false;
@@ -35,9 +37,19 @@ namespace LD45 {
 			selectBtn.onClick += SelectClicked;
 			quitBtn = transform.Find("Quit").GetComponent<PhysicalButton>();
 			quitBtn.onClick += QuitClicked;
+			qwertyBtn = transform.Find("QWERTY").GetComponent<PhysicalButton>();
+			qwertyBtn.onClick += QwertyClicked;
+			azertyBtn = transform.Find("AZERTY").GetComponent<PhysicalButton>();
+			azertyBtn.onClick += AzertyClicked;
 			titleObj = transform.Find("Title").Find("default").gameObject;
 
 			TransitionManager.I.FadeFromBlack(1.5f, null, .5f);
+
+			if (InputManager.mode == InputManager.Mode.ForceAZERTY) {
+				azertyBtn.transform.position -= Vector3.up * 0.25f;
+			} else if (InputManager.mode == InputManager.Mode.ForceQWERTY) {
+				qwertyBtn.transform.position -= Vector3.up * 0.25f;
+			}
 		}
 
 		private void Update() {
@@ -76,6 +88,24 @@ namespace LD45 {
 
 		private void Quit() {
 			Application.Quit();
+		}
+
+		private void QwertyClicked() {
+			if (InputManager.mode == InputManager.Mode.ForceQWERTY) return;
+			qwertyBtn.transform.position -= Vector3.up * 0.25f;
+			if (InputManager.mode == InputManager.Mode.ForceAZERTY) {
+				azertyBtn.transform.position += Vector3.up * 0.25f;
+			}
+			InputManager.mode = InputManager.Mode.ForceQWERTY;
+		}
+
+		private void AzertyClicked() {
+			if (InputManager.mode == InputManager.Mode.ForceAZERTY) return;
+			azertyBtn.transform.position -= Vector3.up * 0.25f;
+			if (InputManager.mode == InputManager.Mode.ForceQWERTY) {
+				qwertyBtn.transform.position += Vector3.up * 0.25f;
+			}
+			InputManager.mode = InputManager.Mode.ForceAZERTY;
 		}
 
 	}
