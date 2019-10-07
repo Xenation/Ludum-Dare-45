@@ -9,6 +9,8 @@ namespace LD45 {
 		public Material blackMat;
 		public Material whiteGlowMat;
 		public Material blackGlowMat;
+		public Color textColorWhite;
+		public Color textColorBlack;
 
 		public Transform cameraTarget;
 
@@ -19,12 +21,6 @@ namespace LD45 {
 		private string levelToLoad = "";
 
 		private void Awake() {
-			Shader.SetGlobalFloat("_DepthFadeStart", -1f);
-			Shader.SetGlobalFloat("_DepthFadeEnd", -5f);
-			Shader.SetGlobalVector("_BGColor", Color.black);
-			Shader.SetGlobalFloat("_RevealRadius", 1000f);
-			Camera.main.backgroundColor = Color.black;
-
 			levelBtns = new PhysicalButton[10]; // unsafe
 			foreach (Transform child in transform) {
 				if (!child.gameObject.name.StartsWith("Level")) continue;
@@ -34,9 +30,8 @@ namespace LD45 {
 			}
 			backBtn = transform.Find("Back").GetComponent<PhysicalButton>();
 			backBtn.onClick += BackClicked;
-			titleObj = transform.Find("SelectionTitle").Find("default").gameObject;
 
-			TransitionManager.I.FadeFromBlack(1.5f, null, .5f);
+			titleObj = transform.Find("SelectionTitle").Find("default").gameObject;
 		}
 
 		private void Update() {
@@ -45,6 +40,7 @@ namespace LD45 {
 				Material[] mats = new Material[2] { (dim == Dimension.White) ? whiteMat : blackMat, (dim == Dimension.White) ? whiteGlowMat : blackGlowMat };
 				for (int i = 0; i < levelBtns.Length; i++) {
 					levelBtns[i].GetComponent<Renderer>().material = (dim == Dimension.White) ? whiteMat : blackMat;
+					levelBtns[i].transform.Find("Text").GetComponent<TextMesh>().color = (dim == Dimension.White) ? textColorWhite : textColorBlack;
 				}
 				backBtn.GetComponent<Renderer>().materials = mats;
 				titleObj.GetComponent<Renderer>().material = (dim == Dimension.White) ? whiteMat : blackMat;

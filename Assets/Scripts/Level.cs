@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using Xenon;
-using Xenon.Processes;
 
 namespace LD45 {
 	public class Level : MonoBehaviour {
@@ -14,9 +11,14 @@ namespace LD45 {
 		public float killY = -5f;
 		public string nextLevel = "";
 		public Dimension activeDimension = Dimension.White;
+
+		public delegate void DimensionChangedHandler(Dimension nDim);
+		public event DimensionChangedHandler OnDimensionChange;
 		
 		private List<TheCube> activeCubes = new List<TheCube>();
 		private bool reloadQueued = false;
+
+		private PauseManager pauseManager;
 
 		private void Awake() {
 			current = this;
@@ -29,6 +31,8 @@ namespace LD45 {
 			Shader.SetGlobalFloat("_DepthFadeEnd", -5f);
 			Shader.SetGlobalVector("_BGColor", activeDimension.GetBGColor());
 			Camera.main.backgroundColor = activeDimension.GetBGColor();
+
+			pauseManager = FindObjectOfType<PauseManager>();
 		}
 
 		private void StartFadeEnded() {
@@ -39,7 +43,7 @@ namespace LD45 {
 
 		private void Update() {
 			if (!reloadQueued) {
-				if (Input.GetKeyDown(KeyCode.R)) {
+				if (Input.GetButtonDown("Restart")) {
 					reloadQueued = true;
 					TransitionManager.I.FadeToBlack(1f, ReloadFadeEnded);
 					return;
@@ -48,6 +52,10 @@ namespace LD45 {
 					reloadQueued = true;
 					TransitionManager.I.FadeToBlack(1f, ReloadFadeEnded);
 					return;
+				}
+
+				if (Input.GetButtonDown("Pause")) {
+					pauseManager.Trigger();
 				}
 			}
 
@@ -93,6 +101,7 @@ namespace LD45 {
 			Camera.main.cullingMask = ~LayerMask.GetMask("Ground" + activeDimension.Other());
 			Shader.SetGlobalVector("_BGColor", activeDimension.GetBGColor());
 			Camera.main.backgroundColor = activeDimension.GetBGColor();
+			OnDimensionChange?.Invoke(activeDimension);
 		}
 
 	}

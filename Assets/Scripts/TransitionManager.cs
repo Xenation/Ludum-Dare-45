@@ -34,11 +34,11 @@ namespace LD45 {
 		}
 
 		private void Update() {
-			pm.UpdateProcesses(Time.deltaTime);
+			pm.UpdateProcesses(Time.unscaledDeltaTime);
 		}
 
-		public void FadeToBlack(float duration, Process.OnTerminateCallback endCallback, float delay = 0f) {
-			FadeOutProcess fadeOut = new FadeOutProcess(duration, fadeGraphic);
+		public void FadeToBlack(float duration, Process.OnTerminateCallback endCallback, float delay = 0f, float endAlpha = 1f, bool useCurrentAlpha = false) {
+			FadeOutProcess fadeOut = (useCurrentAlpha) ? new FadeOutProcess(duration, fadeGraphic, endAlpha, true) : new FadeOutProcess(duration, fadeGraphic, endAlpha);
 			if (endCallback != null) {
 				fadeOut.TerminateCallback += endCallback;
 			}
@@ -52,7 +52,7 @@ namespace LD45 {
 		}
 
 		public void FadeFromBlack(float duration, Process.OnTerminateCallback endCallback, float delay = 0f) {
-			FadeInProcess fadeIn = new FadeInProcess(duration, fadeGraphic);
+			FadeInProcess fadeIn = new FadeInProcess(duration, fadeGraphic, true);
 			if (endCallback != null) {
 				fadeIn.TerminateCallback += endCallback;
 			}

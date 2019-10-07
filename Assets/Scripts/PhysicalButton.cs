@@ -3,6 +3,8 @@
 namespace LD45 {
 	public class PhysicalButton : MonoBehaviour {
 
+		public bool lowerOnHover = true;
+
 		public delegate void ClickedHandler();
 		public event ClickedHandler onClick;
 		public delegate void ClickedHandlerRef(PhysicalButton btn);
@@ -12,22 +14,38 @@ namespace LD45 {
 			Renderer renderer = GetComponent<Renderer>();
 			if (renderer.materials.Length > 1) {
 				Material mat = mat = renderer.materials[1];
-				Color color = mat.GetColor("_Emis");
-				color *= 1.5f;
-				mat.SetColor("_Emis", color);
+				if (mat.HasProperty("_Emis")) {
+					Color color = mat.GetColor("_Emis");
+					color *= 1.5f;
+					mat.SetColor("_Emis", color);
+				} else if (mat.HasProperty("_EmissionColor")) {
+					Color color = mat.GetColor("_EmissionColor");
+					color *= 1.25f;
+					mat.SetColor("_EmissionColor", color);
+				}
 			}
-			transform.position += Vector3.down * 0.1f;
+			if (lowerOnHover) {
+				transform.position -= transform.up * 0.1f;
+			}
 		}
 
 		private void OnMouseExit() {
 			Renderer renderer = GetComponent<Renderer>();
 			if (renderer.materials.Length > 1) {
 				Material mat = mat = renderer.materials[1];
-				Color color = mat.GetColor("_Emis");
-				color /= 1.5f;
-				mat.SetColor("_Emis", color);
+				if (mat.HasProperty("_Emis")) {
+					Color color = mat.GetColor("_Emis");
+					color /= 1.5f;
+					mat.SetColor("_Emis", color);
+				} else if (mat.HasProperty("_EmissionColor")) {
+					Color color = mat.GetColor("_EmissionColor");
+					color /= 1.25f;
+					mat.SetColor("_EmissionColor", color);
+				}
 			}
-			transform.position += Vector3.up * 0.1f;
+			if (lowerOnHover) {
+				transform.position += transform.up * 0.1f;
+			}
 		}
 
 		private void OnMouseDown() {
